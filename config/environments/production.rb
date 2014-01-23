@@ -1,3 +1,4 @@
+# -*- coding: undecided -*-
 SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -64,4 +65,9 @@ SampleApp::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # アプリケーションのすべてのアクセスをSSL経由にし、
+  # Strict-Transport-Security を使用し
+  # secure cookies を使用する。
+  config.force_ssl = true
 end

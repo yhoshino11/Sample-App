@@ -1,6 +1,7 @@
 SampleApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
   root to: 'static_pages#home'
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
@@ -16,6 +17,11 @@ SampleApp::Application.routes.draw do
 #      user GET    /users/:id(.:format)      users#show
 #           PUT    /users/:id(.:format)      users#update
 #           DELETE /users/:id(.:format)      users#destroy
+#    sessions POST   /sessions(.:format)       sessions#create
+# new_session GET    /sessions/new(.:format)   sessions#new
+#     session DELETE /sessions/:id(.:format)   sessions#destroy
+#  microposts POST   /microposts(.:format)     microposts#create
+#   micropost DELETE /microposts/:id(.:format) microposts#destroy
 #      root        /                         static_pages#home
 #      help        /help(.:format)           static_pages#help
 #     about        /about(.:format)          static_pages#about

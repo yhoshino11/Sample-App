@@ -37,6 +37,22 @@ describe "AuthenticationPages" do
         it { should have_link('Sign out', href: signout_path) }
         it { should_not have_link('Sign in', href: signin_path) }
 
+        describe "disable users#new" do
+          let(:user) { FactoryGirl.create(:user) }          
+          before do
+            visit signup_path
+          end
+          it { should_not have_content('Email') }
+          it { should_not have_content('Password') }
+        end
+
+        describe "disable users#create" do
+          let(:user) { FactoryGirl.create(:user) }
+          before { post users_path }
+          it { should_not have_content('Email') }
+          it { should_not have_content('Password') }
+        end
+
         describe "followed by signout" do
           before { click_link "Sign out" }
           it { should have_link('Sign in') }
